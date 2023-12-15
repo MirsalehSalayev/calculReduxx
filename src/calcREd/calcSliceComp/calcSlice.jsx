@@ -7,13 +7,12 @@ export const calcSlice = createSlice({
     },
     reducers: {
         calculate: (state, action) => {
-            // Doğrudan durumu değiştirmek yerine, yeni bir durum döndürün
             let result;
             try {
-                // eslint-disable-next-line no-new-func
+
                 result = (new Function('return ' + action.payload))();
             } catch (error) {
-                console.error("Hesaplama hatası: ", error);
+                console.error("hata ", error);
             }
             return { ...state, value: result }
         }
